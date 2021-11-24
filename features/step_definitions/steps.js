@@ -19,8 +19,8 @@ Given('{person} is located at {int}', function (person, location) {
   person.moveTo(location)
 })
 
-Given("{person} has bought {int} credits", function (sean, credits) {
-  sean.credits = credits
+Given("{person} has bought {int} credits", function (person, credits) {
+  person.credits = credits
 })
 
 When("{person} shouts", function (shouter) {
