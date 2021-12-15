@@ -7,6 +7,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.datatable.DataTable;
+import shouty.support.ShoutyContext;
 
 import java.util.*;
 
@@ -26,6 +27,8 @@ public class StepDefinitions {
     private Map<String, Person> people;
     private Map<String, List<String>> messagesShoutedBy;
 
+    public StepDefinitions(ShoutyContext context) {
+    }
 
     static class Whereabouts {
         public String name;
