@@ -2,7 +2,6 @@ package shouty;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.DataTableType;
-import io.cucumber.java.Transpose;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -56,9 +55,10 @@ public class StepDefinitions {
         context.network = new Network(range);
     }
 
-    @Given("{word} is located at {int}")
-    public void person_is_located_at(String name, Integer location) {
-        people.put(name, new Person(name, context.network, location));
+    @Given("{person} is located at {int}")
+    public void person_is_located_at(Person person, Integer location) {
+        person.moveTo(location);
+        people.put(person.getName(), person);
     }
 
     @Given("Sean has bought {int} credits")
