@@ -53,16 +53,9 @@ public class StepDefinitions {
         network = new Network(range);
     }
 
-    @Given("a person named {word}")
-    public void a_person_named(String name) throws Throwable {
-        people.put(name, new Person(network, 0));
-    }
-
-    @Given("people are located at")
-    public void people_are_located_at(@Transpose List<Whereabouts> whereabouts) {
-        for (Whereabouts whereabout : whereabouts ) {
-            people.put(whereabout.name, new Person(network, whereabout.location));
-        }
+    @Given("{word} is located at {int}")
+    public void person_is_located_at(String name, Integer location) {
+        people.put(name, new Person(name, context.network, location));
     }
 
     @Given("Sean has bought {int} credits")
@@ -93,20 +86,6 @@ public class StepDefinitions {
         shout(message);
     }
 
-    @When("Sean shouts a message")
-    public void sean_shouts_a_message() throws Throwable {
-        shout("here is a message");
-    }
-
-    @When("Sean shouts a long message")
-    public void sean_shouts_a_long_message() throws Throwable {
-        String longMessage = String.join(
-                "\n",
-                "A message from Sean",
-                "that spans multiple lines");
-        shout(longMessage);
-    }
-
     @When("Sean shouts {int} over-long messages")
     public void sean_shouts_some_over_long_messages(int count) throws Throwable {
         String baseMessage = "A message from Sean that is 181 characters long ";
@@ -132,11 +111,6 @@ public class StepDefinitions {
     public void lucy_hears_Sean_s_message() throws Throwable {
         List<String> messages = messagesShoutedBy.get("Sean");
         assertEquals(messages, people.get("Lucy").getMessagesHeard());
-    }
-
-    @Then("Lucy should hear a shout")
-    public void lucy_should_hear_a_shout() throws Throwable {
-        assertEquals(1, people.get("Lucy").getMessagesHeard().size());
     }
 
     @Then("{word} should not hear a shout")
