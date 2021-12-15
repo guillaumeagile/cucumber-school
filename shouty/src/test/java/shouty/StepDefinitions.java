@@ -22,12 +22,12 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class StepDefinitions {
 
-    private static final int DEFAULT_RANGE = 100;
-    private Network network = new Network(DEFAULT_RANGE);
+    private ShoutyContext context;
     private Map<String, Person> people;
     private Map<String, List<String>> messagesShoutedBy;
 
     public StepDefinitions(ShoutyContext context) {
+        this.context = context;
     }
 
     static class Whereabouts {
@@ -53,7 +53,7 @@ public class StepDefinitions {
 
     @Given("the range is {int}")
     public void the_range_is(int range) throws Throwable {
-        network = new Network(range);
+        context.network = new Network(range);
     }
 
     @Given("{word} is located at {int}")
