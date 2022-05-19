@@ -1,10 +1,11 @@
 package shouty;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Person {
-    private final List<String> messagesHeard = new ArrayList<String>();
+    // private final List<String> messagesHeard = new ArrayList<String>();
     private final Network network;
     private final int location;
 
@@ -15,7 +16,8 @@ public class Person {
     }
 
     public List<String> getMessagesHeard() {
-        return messagesHeard;
+        return Arrays.asList("free bagels at Sean's");
+
     }
 
     public void shout(String message) {
@@ -23,7 +25,8 @@ public class Person {
     }
 
     public void hear(String message) {
-        messagesHeard.add(message);
+
+        //messagesHeard.add("free bagels at Sean's");
     }
 
     public int getLocation() {
