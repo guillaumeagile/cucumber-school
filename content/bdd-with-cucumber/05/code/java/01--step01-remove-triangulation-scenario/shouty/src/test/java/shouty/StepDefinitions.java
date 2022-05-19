@@ -44,7 +44,7 @@ public class StepDefinitions {
 
     @Then("Lucy should hear Sean's message")
     public void lucy_hears_Sean_s_message() throws Throwable {
-        assertEquals(Collections.singletonList(messageFromSean), people.get("Lucy").getMessagesHeard());
+        assertThat(people.get("Lucy").getMessagesHeard(), hasItem(messageFromSean) );
     }
 
     @Then("Larry should not hear Sean's message")
